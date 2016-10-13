@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html" 
+        xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Sexo</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    </h:head>
+    <h:body>
+        
+        <h2>Cadastro - Sexo</h2>
+        <h:form>
+            <h:outputText value="Nome:"/>
+            <h:inputText value="#{sexoMBean.sexo.nome}"/>
+            <br/>
+            <h:outputText value="Sigla:"/>
+            <h:inputText value="#{sexoMBean.sexo.sigla}"/>
+            <br/>
+            <h:commandButton value="Cadastrar" action="#{sexoMBean.salvar}" styleClass="btn btn-success"/>
+            
+        </h:form>
+  
+        <h:form>
+            <h:dataTable value="#{sexoMBean.listaCompleta}" var="sexo" border="1">
+                <h:column>
+                    <f:facet name="header">Nome</f:facet>
+                    <h:outputText value="#{sexo.nome}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Sigla</f:facet>
+                    <h:outputText value="#{sexo.sigla}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Excluir</f:facet>
+                    <h:commandButton value="Excluir" action="#{sexoMBean.excluir(sexo)}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+        
+    </h:body>
+</html>
+
