@@ -20,7 +20,11 @@ public class SexoMBean {
     
     public String salvar(){
         SexoDAO dao = new SexoDAO();
-        dao.insert(sexo);
+        if(sexo.getId() ==0){
+            dao.insert(sexo);
+        }else{
+            dao.update(sexo);
+        }       
         sexo = new Sexo();
         return null;
     }
@@ -40,6 +44,11 @@ public class SexoMBean {
         SexoDAO dao = new SexoDAO();
         dao.update(s);
         sexo = new Sexo();
+        return null;
+    }
+    
+    public String selecionar(Sexo sexo){
+        this.sexo = sexo;
         return null;
     }
 }
